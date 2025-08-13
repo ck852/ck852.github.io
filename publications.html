@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - Charles Kissell, PhD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .page-link {
+            position: relative;
+        }
+
+        .page-link::after {
+            content: "↗";
+            font-size: 0.8rem;
+            margin-left: 4px;
+            opacity: 0.7;
+        }
+
+        .current-page {
+            color: #3498db !important;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        main {
+            padding: 120px 0 80px;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #666;
+            margin-bottom: 4rem;
+        }
+
+        /* Publications */
+        .publications-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .publication {
+            background: white;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .publication:hover {
+            transform: translateY(-5px);
+        }
+
+        .publication-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .publication-authors {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-authors .highlight {
+            font-weight: 600;
+            color: #3498db;
+        }
+
+        .publication-journal {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .publication-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-published {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-revision {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .publication-doi {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .publication-doi a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .publication-doi a:hover {
+            text-decoration: underline;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            transition: transform 0.3s;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .publication {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">Charles Kissell</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#research">Research</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="publications.html" class="page-link current-page">Publications</a></li>
+                <li><a href="coding-demos.html" class="page-link">Coding Demos</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <a href="index.html" class="back-button">← Back to Home</a>
+            
+            <h1 class="page-title">Publications</h1>
+            <p class="page-subtitle">Peer-reviewed research and collaborative works</p>
+
+            <div class="publications-list">
+                <div class="publication">
+                    <h2 class="publication-title">PI(4,5)P₂ regulates the gating of NaV1.4 channels</h2>
+                    <p class="publication-authors">
+                        Gada KD, Kamuene JM, Chandrashekar A, <span class="highlight">Kissell RC</span>, Yauch AK, Plant LD
+                    </p>
+                    <p class="publication-journal">
+                        <em>Journal of General Physiology</em>, 2023 Jun 5;155(6):e202213255
+                    </p>
+                    <span class="publication-status status-published">Published</span>
+                    <div class="publication-doi">
+                        DOI: <a href="https://doi.org/10.1085/jgp.202213255" target="_blank">10.1085/jgp.202213255</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <h2 class="publication-title">Orthosteric interactions with PIP₂ activate TMEM16A channels</h2>
+                    <p class="publication-authors">
+                        Xu J, Santa-Cruz A, Chandrashekar A, Kawano T, <span class="highlight">Kissell RC</span>, Zaka M, Zhang Z, Cui M, Logothetis DE, Plant LD
+                    </p>
+                    <p class="publication-journal">
+                        <em>Under revision</em>
+                    </p>
+                    <span class="publication-status status-revision">In Revision</span>
+                </div>
+
+                <div class="publication">
+                    <h2 class="publication-title">Molecular basis for the activation of the bitter taste receptor TAS2R14 by Ritonavir</h2>
+                    <p class="publication-authors">
+                        Wen J, Ma X, Zhou X, <span class="highlight">Kissell RC</span>, Lu Y, Kim Y, Lee YS, Lee A, Chen S, Xu K, Plant LD, Cui M
+                    </p>
+                    <p class="publication-journal">
+                        <em>Under revision</em>
+                    </p>
+                    <span class="publication-status status-revision">In Revision</span>
+                </div>
+
+                <div class="publication">
+                    <h2 class="publication-title">Identification and characterization of efficacious positive allosteric modulators (PAMs) for HS and LS α4β2 nicotinic receptors</h2>
+                    <p class="publication-authors">
+                        Seth S, Beauzile H, Gaona J, Garai S, Andleeb H, Gadekar PK, Abdelwahed KS, <span class="highlight">Kissell RC</span>, Xu Z, Philips E, Pinheiro N, Plant L, Shen J, Fowler CD, Hamouda A, Thakur GA
+                    </p>
+                    <p class="publication-journal">
+                        <em>Under revision</em>
+                    </p>
+                    <span class="publication-status status-revision">In Revision</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Charles Kissell. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = '#fff';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
