@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Demos - Charles Kissell, PhD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .page-link {
+            position: relative;
+        }
+
+        .page-link::after {
+            content: "↗";
+            font-size: 0.8rem;
+            margin-left: 4px;
+            opacity: 0.7;
+        }
+
+        .current-page {
+            color: #3498db !important;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        main {
+            padding: 120px 0 80px;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #666;
+            margin-bottom: 4rem;
+        }
+
+        /* Demo Grid */
+        .demos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .demo-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .demo-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .demo-content {
+            padding: 2rem;
+        }
+
+        .demo-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .demo-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .demo-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: #e8f4fd;
+            color: #3498db;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .demo-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .demo-link {
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .demo-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .demo-link.primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .demo-link.secondary {
+            background: transparent;
+            color: #3498db;
+            border: 2px solid #3498db;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            transition: transform 0.3s;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .demos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .demo-content {
+                padding: 1.5rem;
+            }
+
+            .demo-links {
+                flex-direction: column;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">Charles Kissell</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#research">Research</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="publications.html" class="page-link">Publications</a></li>
+                <li><a href="coding-demos.html" class="page-link current-page">Coding Demos</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <a href="index.html" class="back-button">← Back to Home</a>
+            
+            <h1 class="page-title">Coding Demos</h1>
+            <p class="page-subtitle">Data analysis tools and automation pipelines for electrophysiology research</p>
+
+            <div class="demos-grid">
+                <div class="demo-card">
+                    <div class="demo-image">
+                        Electrophysiology Analysis Suite<br>
+                        <small>Screenshot Coming Soon</small>
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Patch-Clamp Data Analysis Pipeline</h3>
+                        <p class="demo-description">
+                            Automated Python pipeline for processing whole-cell and voltage-clamp electrophysiology data. Features GUI interface, statistical analysis, and publication-quality figure generation. Reduces analysis time from hours to minutes.
+                        </p>
+                        <div class="demo-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">NumPy</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Matplotlib</span>
+                            <span class="tech-tag">SciPy</span>
+                            <span class="tech-tag">Tkinter</span>
+                        </div>
+                        <div class="demo-links">
+                            <a href="#" class="demo-link primary">View Demo</a>
+                            <a href="#" class="demo-link secondary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <div class="demo-image">
+                        Ion Channel Analysis<br>
+                        <small>Interactive Dashboard</small>
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Ion Channel Kinetics Analyzer</h3>
+                        <p class="demo-description">
+                            Specialized tool for analyzing ion channel activation, inactivation, and conductance properties. Includes curve fitting algorithms and statistical modeling for pharmacological studies.
+                        </p>
+                        <div class="demo-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Curve Fitting</span>
+                            <span class="tech-tag">Statistical Modeling</span>
+                            <span class="tech-tag">Data Visualization</span>
+                        </div>
+                        <div class="demo-links">
+                            <a href="#" class="demo-link primary">View Demo</a>
+                            <a href="#" class="demo-link secondary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <div class="demo-image">
+                        Fluorescence Imaging<br>
+                        <small>Analysis Tools</small>
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Fluorescence Imaging Pipeline</h3>
+                        <p class="demo-description">
+                            Automated processing and analysis of fluorescence microscopy data. Includes image segmentation, intensity quantification, and time-series analysis for calcium imaging and membrane potential studies.
+                        </p>
+                        <div class="demo-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">Image Processing</span>
+                            <span class="tech-tag">Time-Series</span>
+                        </div>
+                        <div class="demo-links">
+                            <a href="#" class="demo-link primary">View Demo</a>
+                            <a href="#" class="demo-link secondary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <div class="demo-image">
+                        Lab Data Management<br>
+                        <small>Automation System</small>
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Laboratory Data Management System</h3>
+                        <p class="demo-description">
+                            Comprehensive system for organizing, tracking, and analyzing experimental data. Features automated file organization, metadata extraction, and integration with analysis pipelines.
+                        </p>
+                        <div class="demo-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Database</span>
+                            <span class="tech-tag">Automation</span>
+                            <span class="tech-tag">File Management</span>
+                        </div>
+                        <div class="demo-links">
+                            <a href="#" class="demo-link primary">View Demo</a>
+                            <a href="#" class="demo-link secondary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Charles Kissell. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = '#fff';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
